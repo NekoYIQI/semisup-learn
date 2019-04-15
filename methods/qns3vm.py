@@ -266,9 +266,9 @@ class QN_S3VM_Dense:
         KNR = KNR - KNU_bar_horizontal_sum - self.__KU_barR_vertical_sum + self.__KU_barU_bar_sum
         preds = KNR * self.__c[0:self.__dim-1,:] + self.__c[self.__dim-1,:]
         if real_valued == True:
-            return preds.flatten(1).tolist()[0]
+            return preds.flatten().tolist()[0]
         else:
-            return np.sign(np.sign(preds)+0.1).flatten(1).tolist()[0]
+            return np.sign(np.sign(preds)+0.1).flatten().tolist()[0]
     
     def predict(self, x):
         """
@@ -469,9 +469,9 @@ class QN_S3VM_Dense:
     def __getTrainingPredictions(self, X, real_valued=False):
         preds = self.__KNR * self.__c[0:self.__dim-1,:] + self.__c[self.__dim-1,:]
         if real_valued == True:
-            return preds.flatten(1).tolist()[0]
+            return preds.flatten().tolist()[0]
         else:
-            return np.sign(np.sign(preds)+0.1).flatten(1).tolist()[0]
+            return np.sign(np.sign(preds)+0.1).flatten().tolist()[0]
 
     def __check_matrix(self, M):
         smallesteval = scipy.linalg.eigvalsh(M, eigvals=(0,0))[0]
@@ -567,9 +567,9 @@ class QN_S3VM_Sparse:
         X = X.tocsc()
         preds = X * W + self.__b
         if real_valued == True:
-            return preds.flatten(1).tolist()[0]
+            return preds.flatten().tolist()[0]
         else:
-            return np.sign(np.sign(preds)+0.1).flatten(1).tolist()[0]
+            return np.sign(np.sign(preds)+0.1).flatten().tolist()[0]
 
     def predict(self, x):
         """
